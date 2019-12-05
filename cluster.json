@@ -95,8 +95,8 @@
   },
   "extraNodes": [
     {
-      "nodeGroup": "vasia-mariadb",
-      "nodeType": "vasia-mariadb",
+      "nodeGroup": "ash-mariadb",
+      "nodeType": "ash-mariadb",
       "count": 1,      
       "validation": {
         "tag": "${clusterNode.tag}"
