@@ -53,15 +53,20 @@
       }
     ]
   },
-  "validation": {
-    "scalingMode": "STATELESS",
+   "validation": {
+    "minCount": 2,
+    "extraNodesCount": 1,
     "rules": {
       "scheme": {
-        "master": {
-          "minCount": 2
-        },
+        "mm": {
+          "maxCount": 2,
+          "extraNodesCount": 2
+        }
+      }
+    },
         "slave": {
-          "minCount": 2
+          "maxCount": 2,
+          "extraNodesCount": 3
         },
         "galera": {
           "minCount": 3,
@@ -76,10 +81,8 @@
             "proxyCount": 2
           }
         }
-      }
-    }
-  },
-  "recommended": {
+      },
+    "recommended": {
     "cloudlets": "${globals.recCloudlets}"
   },
   "requires": [
