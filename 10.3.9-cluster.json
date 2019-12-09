@@ -54,33 +54,41 @@
     ]
   },
    "validation": {
+    "scalingMode": "NEW",
     "minCount": 2,
     "extraNodesCount": 1,
     "rules": {
       "scheme": {
-        "mm": {
+        "master": {
           "maxCount": 2,
-          "extraNodesCount": 2
+          "extraNodesCount": 2,
+          "setGlobals": {
+            "recCloudlets": 10
+          }
         },
         "slave": {
-          "maxCount": 2,
-          "extraNodesCount": 3
+          "minCount": 3,
+          "maxCount":4,
+          "extraNodesCount": 3,
+          "setGlobals": {
+            "recCloudlets": 12
+          }
         },
         "galera": {
-          "minCount": 3,
-          "setGlobals": {
-            "recCloudlets": 16
+          "minCount": 4,
+          "minCloudlets": 16
           }
-        }
-      }  
-    },
+      },
       "is_proxysql": {
         "true": {
+          "extraNodesCount": 2,
           "setGlobals": {
             "proxyCount": 2
           }
         }
-      },
+      }
+    }
+  },
     "recommended": {
     "cloudlets": "${globals.recCloudlets}"
   },
