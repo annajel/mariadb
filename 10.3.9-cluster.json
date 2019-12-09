@@ -61,9 +61,7 @@
         "mm": {
           "maxCount": 2,
           "extraNodesCount": 2
-        }
-      }
-    },
+        },
         "slave": {
           "maxCount": 2,
           "extraNodesCount": 3
@@ -74,7 +72,8 @@
             "recCloudlets": 16
           }
         }
-      },
+      }  
+    },
       "is_proxysql": {
         "true": {
           "setGlobals": {
