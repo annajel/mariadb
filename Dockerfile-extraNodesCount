@@ -1,4 +1,4 @@
-FROM devbeta/mariadb:10.3.9  
+FROM devbeta/mariadb:10.4.9  
 
 LABEL name="ASH+MariaDB"
 LABEL nodeType="ash-mariadb"
