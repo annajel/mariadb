@@ -103,6 +103,7 @@
     "scalingMode": "stateless",
     "count": "${globals.proxyCount:0}",
     "validation": {
+      "minCount": 2
       "maxCount": 2
     }
   },
