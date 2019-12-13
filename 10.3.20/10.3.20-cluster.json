@@ -13,8 +13,8 @@
   ],
   "settings": {
     "data": {
-      "scheme": "slave",
-      "is_proxysql": true
+      "scheme": "master",
+      "is_proxysql": false
     },
     "fields": [
       {
@@ -54,7 +54,7 @@
     ]
   },
   "validation": {
-    "scalingMode": "STATELESS",
+    "scalingMode": "CLONE",
     "rules": {
       "scheme": {
         "master": {
@@ -86,12 +86,12 @@
   "extraNodes": {
     "nodeGroup": "proxy",
     "nodeType": "proxysql",
-    "cloudlets": 16,
+    "cloudlets": 17,
     "displayName": "ProxySQL",
     "scalingMode": "stateful",
     "count": "${globals.proxyCount:0}",
     "validation": {
-      "minCount": 2,
+      "minCount": 1,
       "maxCount": 2
     }
   },
