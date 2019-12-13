@@ -83,10 +83,10 @@
   "requires": [
     "proxysql"
   ],
-  "extraNodes2": {
+  "extraNodes": {
     "nodeGroup": "proxy",
     "nodeType": "proxysql",
-    "cloudlets": 8,
+    "cloudlets": 12,
     "displayName": "ProxySQL",
     "scalingMode": "stateless",
     "count": "${globals.proxyCount:0}",
