@@ -86,11 +86,11 @@
   "extraNodes": {
     "nodeGroup": "proxy",
     "nodeType": "proxysql",
-    "cloudlets": 12,
+    "cloudlets": 8,
     "displayName": "ProxySQL",
     "scalingMode": "stateless",
     "count": "${globals.proxyCount:0}",
-    "validation": {
+    "validation2": {
       "minCount": 2,
       "maxCount": 2
     }
