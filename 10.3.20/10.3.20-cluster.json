@@ -14,7 +14,7 @@
   "settings": {
     "data": {
       "scheme": "master",
-      "is_proxysql": false
+      "is_proxysql": true
     },
     "fields": [
       {
@@ -55,21 +55,27 @@
   },
   "validation": {
     "scalingMode": "CLONE",
+    "minCount": 2,
+    "extraNodesCount": 2,
     "rules": {
       "scheme": {
         "master": {
-          "minCount": 2
-        },
-        "slave": {
-          "minCount": 2
-        },
-        "galera": {
-          "minCount": 3
-        }
-      },
+          "maxCount": 2,
+          "extraNodesCount": 2
+    },
+    "slave": {
+      "maxCount": 2,
+      "extraNodesCount": 3
+    },
+    "galera": {
+      "minCount": 3,
+      "setGlobals": {
+        "recCloudlets": 16
+      	}
+      }
+  },
       "is_proxysql": {
         "true": {
-          "extraNodesCount": 2,
           "setGlobals": {
             "proxyCount": 2
           }
@@ -91,9 +97,8 @@
     "scalingMode": "stateful",
     "count": "${globals.proxyCount:0}",
     "validation": {
-      "minCount": 1,
-      "maxCount": 2
-    }
+      "minCount": 2
+     }
   },
   "description": "Automatic clusterization of the databases using the chosen scheme with pre-configured replication and auto-discovery of the nodes."
 }
