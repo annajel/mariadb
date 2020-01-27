@@ -1,5 +1,5 @@
 {
-  "jps": "https://raw.githubusercontent.com/annajel/mysql-cluster/master/addons/auto-clustering/auto-cluster.jps",
+  "jps": "https://raw.githubusercontent.com/jelastic-jps/mysql-cluster/master/addons/auto-clustering/auto-cluster.jps",
   "defaultState": false,
   "skipOnEnvInstall": true,
   "nodeGroupData": {
@@ -13,7 +13,7 @@
   ],
   "settings": {
     "data": {
-      "scheme": "master",
+      "scheme": "slave",
       "is_proxysql": true
     },
     "fields": [
@@ -53,29 +53,35 @@
       }
     ]
   },
-  "validation": {
-    "scalingMode": "CLONE",
+   "validation": {
+    "scalingMode": "NEW",
     "minCount": 2,
-    "extraNodesCount": 2,
+    "extraNodesCount": 1,
     "rules": {
       "scheme": {
         "master": {
           "maxCount": 2,
-          "extraNodesCount": 2
-    },
-    "slave": {
-      "maxCount": 2,
-      "extraNodesCount": 3
-    },
-    "galera": {
-      "minCount": 3,
-      "setGlobals": {
-        "recCloudlets": 16
-      	}
-      }
-  },
+          "extraNodesCount": 2,
+          "setGlobals": {
+            "recCloudlets": 10
+          }
+        },
+        "slave": {
+          "minCount": 3,
+          "maxCount":4,
+          "extraNodesCount": 3,
+          "setGlobals": {
+            "recCloudlets": 12
+          }
+        },
+        "galera": {
+          "minCount": 4,
+          "minCloudlets": 16
+          }
+      },
       "is_proxysql": {
         "true": {
+          "extraNodesCount": 2,
           "setGlobals": {
             "proxyCount": 2
           }
@@ -83,7 +89,7 @@
       }
     }
   },
-  "recommended": {
+    "recommended": {
     "cloudlets": "${globals.recCloudlets}"
   },
   "requires": [
@@ -92,13 +98,14 @@
   "extraNodes": {
     "nodeGroup": "proxy",
     "nodeType": "proxysql",
-    "cloudlets": 17,
+    "cloudlets": 8,
     "displayName": "ProxySQL",
-    "scalingMode": "stateful",
+    "scalingMode": "stateless",
     "count": "${globals.proxyCount:0}",
     "validation": {
-      "minCount": 2
-     }
+      "minCount": 2,
+      "maxCount": 2
+    }
   },
   "description": "Automatic clusterization of the databases using the chosen scheme with pre-configured replication and auto-discovery of the nodes."
 }
