@@ -68,7 +68,7 @@
         },
         "slave": {
           "minCount": 1,
-          "extraNodesCount": 3,
+          "extraNodesCount": 1,
           "setGlobals": {
             "recCloudlets": 12
           }
