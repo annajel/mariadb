@@ -67,15 +67,14 @@
           }
         },
         "slave": {
-          "minCount": 3,
-          "maxCount":4,
+          "minCount": 1,
           "extraNodesCount": 3,
           "setGlobals": {
             "recCloudlets": 12
           }
         },
         "galera": {
-          "minCount": 4,
+          "minCount": 3,
           "minCloudlets": 16
           }
       },
