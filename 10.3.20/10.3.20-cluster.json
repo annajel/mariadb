@@ -46,6 +46,7 @@
         "rules": {
             "scheme": {
                 "master": {
+                    "minCount": 3,
                     "extraNodesCount": 2,
                     "scalingMode": "STATEFUL",
                     "setGlobals": {
@@ -56,12 +57,12 @@
                     "maxCount": 2,
                     "extraNodesCount": 3,
                      "setGlobals": {
-                        "recCloudlets": 8
+                        "recCloudlets": 10
                     }
                 },
                 "galera": {
-                    "minCount": 3,
-                    "maxCount":3,
+                    "minCount": 4,
+                    "maxCount":6,
                     "setGlobals": {
                         "recCloudlets": 16
                     }
