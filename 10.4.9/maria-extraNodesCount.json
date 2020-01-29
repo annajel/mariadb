@@ -41,7 +41,6 @@
         }]
     },
     "validation": {
-        "extraNodesCount": 2,
         "scalingMode": "STATELESS",
         "rules": {
             "scheme": {
@@ -80,14 +79,16 @@
         "proxysql"
     ],
     "extraNodes": {
-        "nodeGroup": "proxy",
-        "nodeType": "proxysql",
-        "cloudlets": 8,
-        "displayName": "ProxySQL",
-        "count": "${globals.proxyCount:0}",
-        "validation": {
-            "minCount": 2         
-        }
-    },
+    "nodeGroup": "proxy",
+    "nodeType": "proxysql",
+    "cloudlets": 17,
+    "displayName": "ProxySQL",
+    "scalingMode": "stateful",
+    "count": "${globals.proxyCount:0}",
+    "validation": {
+      "minCount": 1,
+      "maxCount": 2
+    }
+  },
     "description": "Automatic clusterization of the databases using the chosen scheme with pre-configured replication and auto-discovery of the nodes."
 }
