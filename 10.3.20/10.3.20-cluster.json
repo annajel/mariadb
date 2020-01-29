@@ -41,7 +41,6 @@
     },
     "validation": {
         "minCount": 2,
-        "maxCount": 2,
         "extraNodesCount": 1,
         "scalingMode": "STATELESS",
         "rules": {
