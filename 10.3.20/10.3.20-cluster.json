@@ -41,16 +41,19 @@
     },
     "validation": {
         "scalingMode": "STATELESS",
+        "extraNodesCount": 1
         "rules": {
             "scheme": {
                 "master": {
                     "minCount": 2,
+                    "extraNodesCount": 2
                     "setGlobals": {
                         "recCloudlets": 8
                     }
                 },
                 "slave": {
                     "minCount": 2,
+                    "extraNodesCount": 3
                      "setGlobals": {
                         "recCloudlets": 8
                     }
