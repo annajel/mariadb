@@ -54,7 +54,7 @@
                     }
                 },
                 "slave": {
-                    "maxCount": 2,
+                    "maxCount": 4,
                     "extraNodesCount": 3,
                      "setGlobals": {
                         "recCloudlets": 10
