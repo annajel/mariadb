@@ -40,7 +40,6 @@
         }]
     },
     "validation": {
-        "minCount": 2,
         "extraNodesCount": 1,
         "rules": {
             "scheme": {
