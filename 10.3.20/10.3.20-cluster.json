@@ -77,6 +77,9 @@
             }  
         }
     },
+     "targetRegions": {
+     "type": ["vz7"]
+  },
     "recommended": {
         "cloudlets": "${globals.recCloudlets}"
     },
