@@ -82,7 +82,7 @@
     "nodeType": "proxysql",
     "cloudlets": 10,
     "image": "devbeta/proxysql:2.0.8",
-    "count": "${globals.proxyCount:0}",
+    "count": "${globals.proxyCount:3}",
     "displayName": "ASH-proxy-docker",
     "startService": false,
     "volumes": [
@@ -107,7 +107,6 @@
       "sqldb:mary"
     ],
     "validation": {
-      "minCount": 3,
       "maxCount": 3
     }
   },
