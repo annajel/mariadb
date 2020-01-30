@@ -78,24 +78,15 @@
         "proxysql"
     ],
     "extraNodes": [
-  {
+   {
     "nodeGroup": "proxy",
     "nodeType": "proxysql",
     "count":"${globals.proxyCount:0}",
-    "fixedCloudlets": "${clusterNode.fixedCloudlets}",
     "flexibleCloudlets": "${clusterNode.flexibleCloudlets}",
     "displayName": "ASH-FEW-EXTRA",
     "scalingMode": "NEW",
-    "extip": true,
-    "tag": "2.0.6",
-    "diskLimit": 10
-  },
-  {
-    "image": "mysql5:latest",
-    "cloudlets": 8,
-    "nodeGroup": "db",
-    "displayName": "Database"
-  },
+    "tag": "2.0.6"
+   },
   {
     "nodeType": "bl",
     "cloudlets": 4,
