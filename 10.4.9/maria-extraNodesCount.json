@@ -81,6 +81,7 @@
   {
     "nodeGroup": "proxy",
     "nodeType": "proxysql",
+    "count":"${globals.proxyCount:0}",
     "fixedCloudlets": "${clusterNode.fixedCloudlets}",
     "flexibleCloudlets": "${clusterNode.flexibleCloudlets}",
     "displayName": "ASH-FEW-EXTRA",
@@ -88,16 +89,6 @@
     "extip": true,
     "tag": "2.0.6",
     "diskLimit": 10
-  },
-  {
-    "image": "wordpress:latest",
-    "links": [
-      "db:DB",
-      "memcached:MEMCACHED"
-    ],
-    "cloudlets": 8,
-    "nodeGroup": "cp",
-    "displayName": "AppServer"
   },
   {
     "image": "mysql5:latest",
