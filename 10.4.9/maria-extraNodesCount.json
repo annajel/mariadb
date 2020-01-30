@@ -82,16 +82,18 @@
          "nodeGroup": "proxy",
          "nodeType": "proxysql",
          "count":"${globals.proxyCount:0}",
-         "flexibleCloudlets": "${clusterNode.flexibleCloudlets}",
+         "cloudlets": 6,
          "displayName": "ASH-FEW-EXTRA",
          "scalingMode": "NEW",
          "tag": "2.0.6"
       },
       {
          "nodeType": "bl",
-         "cloudlets": 4,
          "nodeGroup": "apache-lb",
-         "displayName": "Apache-Balancer"
+         "cloudlets": 4,
+         "displayName": "Apache-Balancer",
+         "scalingMode": "CLONE",
+         "tag": "2.4.41"
       }  
    ],
     "description": "Automatic clusterization of the databases using the chosen scheme with pre-configured replication and auto-discovery of the nodes."
