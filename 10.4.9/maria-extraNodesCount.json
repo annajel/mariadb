@@ -77,38 +77,29 @@
     "requires": [
         "proxysql"
     ],
-    "extraNodes": {
-    "nodeGroup": "proxy",
-    "nodeType": "proxysql",
-    "cloudlets": 10,
-    "image": "devbeta/proxysql:2.0.8",
-    "count": 3,
-    "displayName": "ASH-proxy-docker",
-    "startService": false,
-    "volumes": [
-      "/external",
-      "/data",
-      "/master",
-      "/local"
-      ],
-    "volumeMounts": {
-      "/example-path": {
-      "sourcePath": "",
-      "sourceNodeId": 0,
-      "sourceNodeGroup": "",
-      "sourceHost": "",
-      "readOnly": true
-      }
-    },
-     "env": {
-      "JELASTIC_PORTS": "3306, 33061, 33062,11111"
-    },
+    "extraNodes": [
+  {
+    "image": "wordpress:latest",
     "links": [
-      "sqldb:mary"
+      "db:DB",
+      "memcached:MEMCACHED"
     ],
-    "validation": {
-      "maxCount": 3
-    }
+    "cloudlets": 8,
+    "nodeGroup": "cp",
+    "displayName": "AppServer"
   },
+  {
+    "image": "mysql5:latest",
+    "cloudlets": 8,
+    "nodeGroup": "db",
+    "displayName": "Database"
+  },
+  {
+    "image": "memcached:latest",
+    "cloudlets": 4,
+    "nodeGroup": "memcached",
+    "displayName": "Memcached"
+  }
+],
     "description": "Automatic clusterization of the databases using the chosen scheme with pre-configured replication and auto-discovery of the nodes."
 }
