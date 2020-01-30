@@ -77,16 +77,12 @@
     "requires": [
         "proxysql"
     ],
-     "extraNodes": {
+    "extraNodes": {
     "nodeGroup": "proxy",
     "nodeType": "proxysql",
     "cloudlets": 17,
-    "fixedCloudlets": 4,
-    "displayName": "ASH-ProxySQL",
+    "displayName": "ProxySQL",
     "scalingMode": "stateful",
-    "extip": true,
-    "tag": "2.0.6",
-    "diskLimit": 10,
     "count": "${globals.proxyCount:0}",
     "validation": {
       "minCount": 1,
