@@ -79,6 +79,17 @@
     ],
     "extraNodes": [
   {
+    "nodeGroup": "proxy",
+    "nodeType": "proxysql",
+    "fixedCloudlets": "${clusterNode.fixedCloudlets}",
+    "flexibleCloudlets": "${clusterNode.flexibleCloudlets}",
+    "displayName": "ASH-FEW-EXTRA",
+    "scalingMode": "NEW",
+    "extip": true,
+    "tag": "2.0.6",
+    "diskLimit": 10
+  },
+  {
     "image": "wordpress:latest",
     "links": [
       "db:DB",
@@ -95,10 +106,10 @@
     "displayName": "Database"
   },
   {
-    "image": "memcached:latest",
+    "nodeType": "bl",
     "cloudlets": 4,
-    "nodeGroup": "memcached",
-    "displayName": "Memcached"
+    "nodeGroup": "apache-lb",
+    "displayName": "Apache-Balancer"
   }
 ],
     "description": "Automatic clusterization of the databases using the chosen scheme with pre-configured replication and auto-discovery of the nodes."
