@@ -79,9 +79,9 @@
     ],
     "extraNodes": {
     "nodeGroup": "proxy",
-    "nodeType": "proxysql1",
+    "nodeType": "proxysql",
     "cloudlets": 10,
-    "image": "devbeta/proxysql:2.0.8",
+    "image": "devbeta/proxysql:2.0.88",
     "count": 3,
     "displayName": "ASH-proxy-docker",
     "startService": false,
