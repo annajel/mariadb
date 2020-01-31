@@ -89,21 +89,7 @@
             "maxCount": 2
         }
     },
-  {
-    "nodeType": "docker",
-    "nodeGroup": "docker",
-    "count": 1,
-    "restartDelay": 10,
-    "diskLimit": 10,
-    "extip": 1,
-    "scalingMode": "NEW",
-    "displayName": "Docker Memcached",
-    "fixedCloudlets": 6,
-    "flexibleCloudlets": 18,
-    "image": "memcached",
-    "mission": "docker"
-  },
-  {
+    {
     "nodeType": "docker",
     "nodeGroup": "docker2",
     "count": 1,
