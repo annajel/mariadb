@@ -79,8 +79,8 @@
     ],
     "extraNodes":[
    {
-        "nodeGroup": "proxya",
-        "nodeType": "proxysql",
+        "nodeGroup": "proxy",
+        "nodeType": "proxysqlia",
         "fixedCloudlets": 2,
         "flexibleCloudlets": 8,
         "displayName": "ProxySQL",
