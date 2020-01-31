@@ -77,23 +77,59 @@
     "requires": [
         "proxysql"
     ],
-    "extraNodes":[{ 
-      "nodeGroup": "proxy",
-      "nodeType": "proxysql",
-      "count":"${globals.proxyCount:0}",
-      "cloudlets": 6,
-      "displayName": "ASH-FEW-EXTRA",
-      "scalingMode": "NEW",
-      "tag": "2.0.6"
-      },
-      {
-      "nodeType": "bl",
-      "nodeGroup": "apache-lb",
-      "cloudlets": 4,
-      "displayName": "Apache-Balancer",
-      "scalingMode": "CLONE",
-      "tag": "2.4.41"
-      }  
-   ],
+    "extraNodes":[
+  {
+    "nodeType": "docker",
+    "nodeGroup": "docker",
+    "count": 1,
+    "restartDelay": 30,
+    "diskLimit": 50,
+    "extip": 0,
+    "extipv6": 0,
+    "color": "#25b7ea",
+    "scalingMode": "STATELESS",
+    "displayName": "Docker Memcached",
+    "fixedCloudlets": 1,
+    "flexibleCloudlets": 16,
+    "image": "memcached",
+    "mission": "docker"
+  },
+  {
+    "nodeType": "docker",
+    "nodeGroup": "docker2",
+    "count": 1,
+    "restartDelay": 30,
+    "diskLimit": 50,
+    "extip": 0,
+    "extipv6": 0,
+    "displayName": "Docker MySQL",
+    "color": "#727cff",
+    "scalingMode": "STATELESS",
+    "fixedCloudlets": 1,
+    "flexibleCloudlets": 16,
+    "image": "mysql",
+    "mission": "docker"
+  },
+  {
+    "nodeType": "docker",
+    "nodeGroup": "docker3",
+    "count": 1,
+    "restartDelay": 30,
+    "diskLimit": 50,
+    "extip": 0,
+    "extipv6": 0,
+    "displayName": "Docker WP",
+    "color": "#fec961",
+    "scalingMode": "STATELESS",
+    "fixedCloudlets": 1,
+    "flexibleCloudlets": 16,
+    "image": "wordpress",
+    "mission": "docker",
+     "links": [
+      "db:DB",
+      "memcached:MEMCACHED"
+    ]
+  }
+],
     "description": "Automatic clusterization of the databases using the chosen scheme with pre-configured replication and auto-discovery of the nodes."
 }
