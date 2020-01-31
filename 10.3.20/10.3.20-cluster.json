@@ -40,29 +40,23 @@
         }]
     },
     "validation": {
-        "minCount": 2,
-        "extraNodesCount": 1,
         "scalingMode": "STATELESS",
         "rules": {
             "scheme": {
                 "master": {
-                    "minCount": 3,
-                    "extraNodesCount": 2,
-                    "scalingMode": "STATEFUL",
+                    "minCount": 2,
                     "setGlobals": {
                         "recCloudlets": 8
                     }
                 },
                 "slave": {
-                    "maxCount": 4,
-                    "extraNodesCount": 3,
+                    "minCount": 2,
                      "setGlobals": {
-                        "recCloudlets": 10
+                        "recCloudlets": 8
                     }
                 },
                 "galera": {
-                    "minCount": 4,
-                    "maxCount":6,
+                    "minCount": 3,
                     "setGlobals": {
                         "recCloudlets": 16
                     }
@@ -77,14 +71,22 @@
             }  
         }
     },
-     "targetRegions": {
-     "type": ["vz7"]
-  },
     "recommended": {
         "cloudlets": "${globals.recCloudlets}"
     },
     "requires": [
         "proxysql"
     ],
+    "extraNodes": {
+        "nodeGroup": "proxy",
+        "nodeType": "proxysql",
+        "cloudlets": 8,
+        "displayName": "ProxySQL",
+        "count": "${globals.proxyCount:0}",
+        "validation": {
+            "minCount": 2,
+            "maxCount": 2
+        }
+    },
     "description": "Automatic clusterization of the databases using the chosen scheme with pre-configured replication and auto-discovery of the nodes."
 }
