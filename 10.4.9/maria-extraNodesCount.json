@@ -115,9 +115,8 @@
     "flexibleCloudlets": 32,
     "image": "wordpress",
     "mission": "docker",
-     "links": [
-      "db:DB",
-      "memcached:MEMCACHED"
+    "links": [
+     "docker2:db2"
     ]
   }
 ],
