@@ -81,8 +81,7 @@
    {
         "nodeGroup": "proxy",
         "nodeType": "proxysql",
-        "fixedCloudlets": 2,
-        "flexibleCloudlets": 8,
+        "cloudlets": 8,
         "displayName": "ProxySQL",
         "count": "${globals.proxyCount:0}",
         "validation": {
@@ -90,18 +89,34 @@
             "maxCount": 2
         }
     },
-    {
+  {
+    "nodeType": "docker",
+    "nodeGroup": "docker",
+    "count": 1,
+    "restartDelay": 10,
+    "diskLimit": "100M",
+    "extip": true,
+    "scalingMode": "NEW",
+    "displayName": "Docker Memcached",
+    "fixedCloudlets": 6,
+    "flexibleCloudlets": 18,
+    "image": "memcached",
+    "mission": "docker",
+    "cmd": "./test_command/run"
+  },
+  {
     "nodeType": "docker",
     "nodeGroup": "docker2",
     "count": 1,
-    "diskLimit": 20,
-    "extipv6": 1,
+    "diskLimit": "1T",
+    "extipv6": true,
     "displayName": "Docker MySQL",
     "scalingMode": "NEW",
     "fixedCloudlets": 2,
     "flexibleCloudlets": 8,
     "image": "mysql",
-    "mission": "docker"
+    "mission": "docker",
+    "startService": true 
   },
   {
     "nodeType": "docker",
@@ -115,8 +130,10 @@
     "flexibleCloudlets": 32,
     "image": "wordpress",
     "mission": "docker",
-    "links": [
-     "docker2:db2"
+     "links": [
+      "db:DB",
+      "memcached:MEMCACHED",
+    "startService": true
     ]
   }
 ],
