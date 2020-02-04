@@ -77,64 +77,39 @@
     "requires": [
         "proxysql"
     ],
-    "extraNodes":[
-   {
-        "nodeGroup": "proxy",
-        "nodeType": "proxysql",
-        "cloudlets": 8,
-        "displayName": "ProxySQL",
-        "count": "${globals.proxyCount:0}",
-        "validation": {
-            "minCount": 2,
-            "maxCount": 2
-        }
+    "extraNodes": {
+    "nodeGroup": "proxy",
+    "nodeType": "proxysql",
+    "cloudlets": 10,
+    "image": "devbeta/proxysql:2.0.8",
+    "count": "${globals.proxyCount:0}",
+    "displayName": "ASH-proxy-docker",
+    "startService": false,
+    "volumes": [
+      "/external",
+      "/data",
+      "/master",
+      "/local"
+      ],
+    "volumeMounts": {
+      "/example-path": {
+      "sourcePath": "",
+      "sourceNodeId": 0,
+      "sourceNodeGroup": "",
+      "sourceHost": "",
+      "readOnly": true
+      }
     },
-  {
-    "nodeType": "docker",
-    "nodeGroup": "docker",
-    "count": 1,
-    "restartDelay": 10,
-    "diskLimit": "100M",
-    "extip": true,
-    "scalingMode": "NEW",
-    "displayName": "Docker Memcached",
-    "fixedCloudlets": 6,
-    "flexibleCloudlets": 18,
-    "image": "memcached",
-    "mission": "docker",
-    "cmd": "./test_command/run"
+     "env": {
+      "JELASTIC_PORTS": "3306, 33061, 33062,11111"
+    },
+    "links": [
+      "sqldb:mary"
+    ],
+    "validation": {
+      "minCount": 3,
+      "maxCount": 3
+    }
   },
-  {
-    "nodeType": "docker",
-    "nodeGroup": "docker2",
-    "count": 1,
-    "diskLimit": "1T",
-    "extipv6": true,
-    "displayName": "Docker MySQL",
-    "scalingMode": "NEW",
-    "fixedCloudlets": 2,
-    "flexibleCloudlets": 8,
-    "image": "mysql",
-    "mission": "docker",
-    "startService": true 
-  },
-  {
-    "nodeType": "docker",
-    "nodeGroup": "docker3",
-    "count": 1,
-    "restartDelay": 50,
-    "diskLimit": 30,
-    "displayName": "Docker WP",
-    "scalingMode": "CLONE",
-    "fixedCloudlets": 10,
-    "flexibleCloudlets": 32,
-    "image": "wordpress",
-    "mission": "docker",
-     "links": [
-      "db:DB",
-      "memcached:MEMCACHED"],
-    "startService": true
-  }
-],
     "description": "Automatic clusterization of the databases using the chosen scheme with pre-configured replication and auto-discovery of the nodes."
 }
