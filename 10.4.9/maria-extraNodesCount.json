@@ -132,9 +132,8 @@
     "mission": "docker",
      "links": [
       "db:DB",
-      "memcached:MEMCACHED",
+      "memcached:MEMCACHED"],
     "startService": true
-    ]
   }
 ],
     "description": "Automatic clusterization of the databases using the chosen scheme with pre-configured replication and auto-discovery of the nodes."
