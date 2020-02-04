@@ -95,7 +95,7 @@
     "count": 1,
     "restartDelay": 10,
     "diskLimit": 10,
-    "extip": 1,
+    "extip": 2,
     "scalingMode": "NEW",
     "displayName": "Docker Memcached",
     "fixedCloudlets": 6,
@@ -108,7 +108,7 @@
     "nodeGroup": "docker2",
     "count": 1,
     "diskLimit": 20,
-    "extipv6": 1,
+    "extipv6": 2,
     "displayName": "Docker MySQL",
     "scalingMode": "NEW",
     "fixedCloudlets": 2,
@@ -129,8 +129,7 @@
     "image": "wordpress",
     "mission": "docker",
      "links": [
-      "db:DB",
-      "memcached:MEMCACHED"
+      "db2:DB"
     ]
   }
 ],
